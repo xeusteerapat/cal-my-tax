@@ -4,9 +4,9 @@ import {
 	Button,
 	Group,
 	TextInput,
-	PasswordInput,
 	Code,
 	Container,
+	NumberInput,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 
@@ -15,8 +15,9 @@ function App() {
 
 	const form = useForm({
 		initialValues: {
-			username: "",
-			password: "",
+			salary: 0,
+			bonus: 0,
+			otherIncome: 0,
 			name: "",
 			email: "",
 			website: "",
@@ -26,14 +27,8 @@ function App() {
 		validate: (values) => {
 			if (active === 0) {
 				return {
-					username:
-						values.username.trim().length < 6
-							? "Username must include at least 6 characters"
-							: null,
-					password:
-						values.password.length < 6
-							? "Password must include at least 6 characters"
-							: null,
+					salary: values.salary === 0 ? "Salary must be greater than 0" : null,
+					bonus: values.bonus === 0 ? "Bonus must be greater than 0" : null,
 				};
 			}
 
@@ -64,23 +59,29 @@ function App() {
 		setActive((current) => (current > 0 ? current - 1 : current));
 
 	return (
-		<Container>
-			<Stepper active={active}>
-				<Stepper.Step label="First step" description="Profile settings">
-					<TextInput
-						label="Username"
-						placeholder="Username"
-						{...form.getInputProps("username")}
+		<Container fluid>
+			<Stepper active={active} iconSize={26}>
+				<Stepper.Step label="Salary & Bonus">
+					<NumberInput
+						label="Monthly Salary"
+						placeholder="Your monthly salary"
+						{...form.getInputProps("salary")}
 					/>
-					<PasswordInput
+					<NumberInput
 						mt="md"
-						label="Password"
-						placeholder="Password"
-						{...form.getInputProps("password")}
+						label="Bonus"
+						placeholder="Your bonus"
+						{...form.getInputProps("bonus")}
+					/>
+					<NumberInput
+						mt="md"
+						label="Other income"
+						placeholder="Your other income eg. freelance, rent, etc."
+						{...form.getInputProps("otherIncome")}
 					/>
 				</Stepper.Step>
 
-				<Stepper.Step label="Second step" description="Personal information">
+				<Stepper.Step label="Personal deduction">
 					<TextInput
 						label="Name"
 						placeholder="Name"
@@ -94,7 +95,7 @@ function App() {
 					/>
 				</Stepper.Step>
 
-				<Stepper.Step label="Final step" description="Social media">
+				<Stepper.Step label="Provident fund">
 					<TextInput
 						label="Website"
 						placeholder="Website"
@@ -107,7 +108,7 @@ function App() {
 						{...form.getInputProps("github")}
 					/>
 				</Stepper.Step>
-				<Stepper.Step label="Final step" description="Social media">
+				<Stepper.Step label="Insurance & Other fund">
 					<TextInput
 						label="Website"
 						placeholder="Website"
@@ -120,20 +121,7 @@ function App() {
 						{...form.getInputProps("github")}
 					/>
 				</Stepper.Step>
-				<Stepper.Step label="Final step" description="Social media">
-					<TextInput
-						label="Website"
-						placeholder="Website"
-						{...form.getInputProps("website")}
-					/>
-					<TextInput
-						mt="md"
-						label="GitHub"
-						placeholder="GitHub"
-						{...form.getInputProps("github")}
-					/>
-				</Stepper.Step>
-				<Stepper.Step label="Final step" description="Social media">
+				<Stepper.Step label="Calculate Tax">
 					<TextInput
 						label="Website"
 						placeholder="Website"
