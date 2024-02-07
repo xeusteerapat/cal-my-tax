@@ -59,98 +59,106 @@ function App() {
 		setActive((current) => (current > 0 ? current - 1 : current));
 
 	return (
-		<Container fluid>
-			<Stepper active={active} iconSize={26}>
-				<Stepper.Step label="Salary & Bonus">
-					<NumberInput
-						label="Monthly Salary"
-						placeholder="Your monthly salary"
-						{...form.getInputProps("salary")}
-					/>
-					<NumberInput
-						mt="md"
-						label="Bonus"
-						placeholder="Your bonus"
-						{...form.getInputProps("bonus")}
-					/>
-					<NumberInput
-						mt="md"
-						label="Other income"
-						placeholder="Your other income eg. freelance, rent, etc."
-						{...form.getInputProps("otherIncome")}
-					/>
-				</Stepper.Step>
+		<div
+			style={{
+				margin: "auto",
+				// width: "50%",
+				padding: "20px",
+			}}
+		>
+			<Container fluid>
+				<Stepper active={active} iconSize={26}>
+					<Stepper.Step label="Salary & Bonus">
+						<NumberInput
+							label="Monthly Salary"
+							placeholder="Your monthly salary"
+							{...form.getInputProps("salary")}
+						/>
+						<NumberInput
+							mt="md"
+							label="Bonus"
+							placeholder="Your bonus"
+							{...form.getInputProps("bonus")}
+						/>
+						<NumberInput
+							mt="md"
+							label="Other income"
+							placeholder="Your other income eg. freelance, rent, etc."
+							{...form.getInputProps("otherIncome")}
+						/>
+					</Stepper.Step>
 
-				<Stepper.Step label="Personal deduction">
-					<TextInput
-						label="Name"
-						placeholder="Name"
-						{...form.getInputProps("name")}
-					/>
-					<TextInput
-						mt="md"
-						label="Email"
-						placeholder="Email"
-						{...form.getInputProps("email")}
-					/>
-				</Stepper.Step>
+					<Stepper.Step label="Personal deduction">
+						<TextInput
+							label="Name"
+							placeholder="Name"
+							{...form.getInputProps("name")}
+						/>
+						<TextInput
+							mt="md"
+							label="Email"
+							placeholder="Email"
+							{...form.getInputProps("email")}
+						/>
+					</Stepper.Step>
 
-				<Stepper.Step label="Provident fund">
-					<TextInput
-						label="Website"
-						placeholder="Website"
-						{...form.getInputProps("website")}
-					/>
-					<TextInput
-						mt="md"
-						label="GitHub"
-						placeholder="GitHub"
-						{...form.getInputProps("github")}
-					/>
-				</Stepper.Step>
-				<Stepper.Step label="Insurance & Other fund">
-					<TextInput
-						label="Website"
-						placeholder="Website"
-						{...form.getInputProps("website")}
-					/>
-					<TextInput
-						mt="md"
-						label="GitHub"
-						placeholder="GitHub"
-						{...form.getInputProps("github")}
-					/>
-				</Stepper.Step>
-				<Stepper.Step label="Calculate Tax">
-					<TextInput
-						label="Website"
-						placeholder="Website"
-						{...form.getInputProps("website")}
-					/>
-					<TextInput
-						mt="md"
-						label="GitHub"
-						placeholder="GitHub"
-						{...form.getInputProps("github")}
-					/>
-				</Stepper.Step>
-				<Stepper.Completed>
-					Completed! Form values:
-					<Code block mt="xl">
-						{JSON.stringify(form.values, null, 2)}
-					</Code>
-				</Stepper.Completed>
-			</Stepper>
+					<Stepper.Step label="Provident fund">
+						<TextInput
+							label="Website"
+							placeholder="Website"
+							{...form.getInputProps("website")}
+						/>
+						<TextInput
+							mt="md"
+							label="GitHub"
+							placeholder="GitHub"
+							{...form.getInputProps("github")}
+						/>
+					</Stepper.Step>
+					<Stepper.Step label="Insurance & Other fund">
+						<TextInput
+							label="Website"
+							placeholder="Website"
+							{...form.getInputProps("website")}
+						/>
+						<TextInput
+							mt="md"
+							label="GitHub"
+							placeholder="GitHub"
+							{...form.getInputProps("github")}
+						/>
+					</Stepper.Step>
+					<Stepper.Step label="Calculate Tax">
+						<TextInput
+							label="Website"
+							placeholder="Website"
+							{...form.getInputProps("website")}
+						/>
+						<TextInput
+							mt="md"
+							label="GitHub"
+							placeholder="GitHub"
+							{...form.getInputProps("github")}
+						/>
+					</Stepper.Step>
+					<Stepper.Completed>
+						Completed! Form values:
+						<Code block mt="xl">
+							{JSON.stringify(form.values, null, 2)}
+						</Code>
+					</Stepper.Completed>
+				</Stepper>
 
-			<Group justify="flex-end" mt="xl">
-				{active !== 0 && (
-					<Button variant="default" onClick={prevStep}>
-						Back
-					</Button>
-				)}
-				{active !== 3 && <Button onClick={nextStep}>Next step</Button>}
-			</Group>
-		</Container>
+				<Group justify="flex-end" mt="xl">
+					{active !== 0 && (
+						<Button variant="default" onClick={prevStep}>
+							Back
+						</Button>
+					)}
+					{active !== 3 && <Button onClick={nextStep}>Next step</Button>}
+				</Group>
+			</Container>
+		</div>
 	);
 }
 
