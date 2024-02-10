@@ -62,7 +62,7 @@ function App() {
 		<div
 			style={{
 				margin: "auto",
-				// width: "50%",
+				width: "80%",
 				padding: "20px",
 			}}
 		>
